@@ -10,7 +10,7 @@ import {
 import SearchForm from './SearchForm';
 import Nav from './Nav';
 import PhotoList from './PhotoList';
-import NotFound from './NotFound';
+import PageNotFound from './PageNotFound';
 
 import apiKey from './config.js'; 
 
@@ -23,7 +23,7 @@ class App extends Component {
       castles: [],
       radiohead: [],
       chicago: [],
-      loading: true
+      loading: true,
     };
   }
 
@@ -31,7 +31,7 @@ class App extends Component {
     this.performSearch();
     this.performSearch('castles');
     this.performSearch('radiohead');
-    this.performSearch('chicago');
+    this.performSearch('chicago architecture');
   }
 
   performSearch = (query='ramen') => {
@@ -47,7 +47,7 @@ class App extends Component {
               radiohead: response.data.photos.photo, 
               loading: false
           });
-        } else if (query === 'chicago'){
+        } else if (query === 'chicago architecture'){
             this.setState({
               chicago: response.data.photos.photo, 
               loading: false
@@ -55,7 +55,7 @@ class App extends Component {
         } else {
             this.setState({
               pics: response.data.photos.photo, 
-              loading: false
+              loading: false,
             });
         }
       })
@@ -71,13 +71,19 @@ class App extends Component {
           <SearchForm onSearch={ this.performSearch }/>
 
           <Nav />
-          <Switch>
-            <Route exact path="/" render={ () => (this.state.loading) ? <p>Loading...</p> : <PhotoList data={ this.state.pics }/> } />
-            <Route path="/castles" render={ () => (this.state.loading) ? <p>Loading...</p> : <PhotoList data={ this.state.castles }/> } />
-            <Route path="/radiohead" render={ () => (this.state.loading) ? <p>Loading...</p> : <PhotoList data={ this.state.radiohead }/> } />
-            <Route path="/chicago" render={ () => (this.state.loading) ? <p>Loading...</p> : <PhotoList data={ this.state.chicago }/> } />
-            <Route component={ NotFound } />
-          </Switch>
+          
+          {
+            (this.state.loading) ? 
+              <p>Loading...</p> :
+              <Switch>
+                <Route exact path="/" render={ () => <PhotoList data={ this.state.pics }/> } />
+                <Route exact path="/castles" render={ () => <PhotoList data={ this.state.castles }/> } />
+                <Route exact path="/radiohead" render={ () => <PhotoList data={ this.state.radiohead }/> } />
+                <Route exact path="/chicago" render={ () => <PhotoList data={ this.state.chicago }/> } />
+                <Route path="/search/:query" render={ () => <PhotoList data={ this.state.pics } query={ this.state.query }/>} />
+                <Route component={ PageNotFound } />
+              </Switch>
+          }
           
         </div> 
       </BrowserRouter>
