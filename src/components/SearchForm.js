@@ -6,6 +6,10 @@ class SearchForm extends Component {
         searchValue: ''
     }
 
+    componentDidMount(){
+        
+    }
+
     onSearchChange = e => {
         this.setState({ searchValue: e.target.value });
     }
