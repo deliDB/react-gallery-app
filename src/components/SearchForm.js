@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//withRouter allows for the use of history
 import { withRouter } from 'react-router';
 class SearchForm extends Component {
     state = {
@@ -14,7 +15,7 @@ class SearchForm extends Component {
         let queryValue = this.query.value;
         let path = `/search/${queryValue}`
         this.props.onSearch(queryValue);
-        this.props.history.push(path);
+        this.props.history.push(path); //Keeps track of search history
         e.currentTarget.reset();
     }
 
