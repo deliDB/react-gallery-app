@@ -7,12 +7,12 @@ import {
 } from 'react-router-dom';
 
 //App Components
-import SearchForm from './SearchForm';
-import Nav from './Nav';
-import PhotoList from './PhotoList';
-import PageNotFound from './PageNotFound';
+import SearchForm from './components/SearchForm';
+import Nav from './components/Nav';
+import PhotoList from './components/PhotoList';
+import PageNotFound from './components/PageNotFound';
 
-import apiKey from './config.js'; 
+import apiKey from './components/config.js'; 
 
 class App extends Component {
 
