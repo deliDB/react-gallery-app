@@ -6,19 +6,16 @@ class SearchForm extends Component {
         searchValue: ''
     }
 
+//Compares search pathnames, if they're different, split into an array on '/' then pass the query (the last string in the array) into the onSearch function) 
     componentDidUpdate(prevProps){ 
-
-        console.log(this.props.match.params.query)
-        console.log(prevProps.match.params.query)
-        // if(this.props.match.params.query !== prevProps.props.match.params.query){
-        //     console.log("they don't match")
-        // }
-        
-        // if(this.props.location.pathname !== prevProps.location.pathname){
-        // //    let currentQuery = this.props.match.params.query;
-        // //    console.log(this.props.onSearch(currentQuery));
-        // }
-        
+        let currPathName = this.props.location.pathname;
+        let prevPathName = prevProps.location.pathname;
+        if(currPathName !== prevPathName){
+            let currPathNameArray = currPathName.split('/');
+            if(currPathNameArray.length === 3){
+                this.props.onSearch(currPathNameArray[2])
+            }
+        } 
     }
         
 
