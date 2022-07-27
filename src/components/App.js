@@ -80,7 +80,7 @@ class App extends Component {
                 <Route exact path="/castles" render={ () => <PhotoList data={ this.state.castles }/> } />
                 <Route exact path="/radiohead" render={ () => <PhotoList data={ this.state.radiohead }/> } />
                 <Route exact path="/chicago" render={ () => <PhotoList data={ this.state.chicago }/> } />
-                <Route path="/search/:query" render={ () => <PhotoList data={ this.state.pics } query={ this.state.query }/>} />
+                <Route path="/search/:query" render={ () => <PhotoList data={ this.state.pics } query={ this.state.query } />} />
                 <Route component={ PageNotFound } />
               </Switch>
           }

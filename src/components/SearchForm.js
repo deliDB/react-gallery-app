@@ -6,9 +6,21 @@ class SearchForm extends Component {
         searchValue: ''
     }
 
-    componentDidMount(){
+    componentDidUpdate(prevProps){ 
+
+        console.log(this.props.match.params.query)
+        console.log(prevProps.match.params.query)
+        // if(this.props.match.params.query !== prevProps.props.match.params.query){
+        //     console.log("they don't match")
+        // }
+        
+        // if(this.props.location.pathname !== prevProps.location.pathname){
+        // //    let currentQuery = this.props.match.params.query;
+        // //    console.log(this.props.onSearch(currentQuery));
+        // }
         
     }
+        
 
     onSearchChange = e => {
         this.setState({ searchValue: e.target.value });
