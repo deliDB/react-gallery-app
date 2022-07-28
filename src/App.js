@@ -35,6 +35,9 @@ class App extends Component {
   }
 
   performSearch = (query='ramen') => {
+    this.setState({
+      loading: true,
+    });
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         if(query === 'castles'){
@@ -68,8 +71,9 @@ class App extends Component {
     return(
       <BrowserRouter>
         <div className='container'>
+        
           <SearchForm onSearch={ this.performSearch }/>
-
+        
           <Nav />
           
           {
