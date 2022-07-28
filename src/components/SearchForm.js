@@ -6,7 +6,7 @@ class SearchForm extends Component {
         searchValue: ''
     }
 
-//Compares search pathnames, if they're different, split into an array on '/' then pass the query (the last string in the array) into the onSearch function) 
+//Compares search pathnames, if they're different, split into an array on '/' then pass the query (the last string in the array) into the onSearch function
     componentDidUpdate(prevProps){ 
         let currPathName = this.props.location.pathname;
         let prevPathName = prevProps.location.pathname;
@@ -18,7 +18,6 @@ class SearchForm extends Component {
         } 
     }
         
-
     onSearchChange = e => {
         this.setState({ searchValue: e.target.value });
     }
